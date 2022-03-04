@@ -1,5 +1,6 @@
 let workingDir = require('./pwd.js');
 let ls = require('./ls.js');
+let cat = require('./cat.js');
 
 //output a prompt
 process.stdout.write('prompt > ')
@@ -9,7 +10,9 @@ process.stdin.on('data', (data) => {
   if (cmd === 'pwd'){
     workingDir();
   } else if (cmd === 'ls'){
-    ls;
+    ls();
+  } else if (cmd === 'cat'){
+    cat();
   } else{
     process.stdout.write('You Typed: ' + cmd);
     process.stdout.write('\nprompt > ')
