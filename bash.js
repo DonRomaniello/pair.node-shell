@@ -10,17 +10,22 @@ process.stdout.write('prompt > ')
 process.stdin.on('data', (data) => {
   const cmd = data.toString().trim().split(' ');
   if (cmd[0] === 'pwd'){
-    workingDir();
+    workingDir(done);
   } else if (cmd[0] === 'ls'){
-    ls();
-  } else if (cmd[0] === 'ls'){
-      ls();
+    ls(done);
   } else if (cmd[0] === 'cat'){
-    cat(cmd[1]);
+    cat(done,cmd[1]);
   } else if (cmd[0] === 'curl'){
-      curl(cmd[1]);
+      curl(done,cmd[1]);
   } else{
-    process.stdout.write('You Typed: ' + cmd);
-    process.stdout.write('\nprompt > ')
+    done(cmd.join(" "));
   }
 })
+
+const done = (output) => {
+  process.stdout.write('You Typed: ' + output);
+  process.stdout.write('\nPrompt > ')
+
+}
+
+module.exports = done;

@@ -1,9 +1,13 @@
 let fs = require('fs');
+let done = require('./bash.js');
 
-let catOut = (fileToRead) => {
+let catOut = (done,fileToRead) => {
   fs.readFile(fileToRead, 'utf8', (err, data) => {
-    if (err) throw err;
-    console.log(data);
+    if (err){
+      done("Something went wrong");
+    } else {
+      done(data);
+    }
   });
 
 

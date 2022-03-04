@@ -1,7 +1,7 @@
+const done = require('./bash.js');
 
-let pwdFunc = () => {
-  process.stdout.write(__dirname);
-  process.stdout.write('\nprompt > ')
+let pwdFunc = (done) => {
+  done(__dirname);
 }
 
 module.exports = pwdFunc;

@@ -1,8 +1,12 @@
 let rq = require("request");
+let done = require('./bash.js');
 
-let curlOut = (link) => rq(link, function(err, response, body){
-  if (err) throw err;
-  console.log(body);
+let curlOut = (done,link) => rq(link, function(err, response, body){
+  if (err){
+    done(err);
+  } else {
+    done(body);
+  }
 });
 
 
