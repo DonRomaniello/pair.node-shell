@@ -2,6 +2,7 @@ let workingDir = require('./pwd.js');
 let ls = require('./ls.js');
 let cat = require('./cat.js');
 let curl = require('./curl.js');
+let date = require('./date.js');
 
 
 //output a prompt
@@ -17,6 +18,9 @@ process.stdin.on('data', (data) => {
     cat(done,cmd[1]);
   } else if (cmd[0] === 'curl'){
       curl(done,cmd[1]);
+  } else if (cmd[0] === 'date')
+  {
+    date(done);
   } else{
     done(cmd.join(" "));
   }
