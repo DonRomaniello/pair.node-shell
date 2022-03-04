@@ -6,13 +6,13 @@ let cat = require('./cat.js');
 process.stdout.write('prompt > ')
 
 process.stdin.on('data', (data) => {
-  const cmd = data.toString().trim();
-  if (cmd === 'pwd'){
+  const cmd = data.toString().trim().split(' ');
+  if (cmd[0] === 'pwd'){
     workingDir();
-  } else if (cmd === 'ls'){
+  } else if (cmd[0] === 'ls'){
     ls();
-  } else if (cmd === 'cat'){
-    cat();
+  } else if (cmd[0] === 'cat'){
+    cat(cmd[1]);
   } else{
     process.stdout.write('You Typed: ' + cmd);
     process.stdout.write('\nprompt > ')

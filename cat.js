@@ -1,6 +1,12 @@
 let fs = require('fs');
 
-let catOut = () => {
+let catOut = (fileToRead) => {
+  fs.readFile(fileToRead, 'utf8', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  });
+
+
 
 }
 
